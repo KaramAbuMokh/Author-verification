@@ -2,7 +2,6 @@ import os
 from itertools import combinations
 import random
 from words_processor import read_file
-# asdasd
 
 def create_labeled_chunks(file_path1, file_path2, chunk_size=10, batch_size=20):
     # Read the files and tokenize the text
