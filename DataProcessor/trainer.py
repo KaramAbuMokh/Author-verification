@@ -1,7 +1,8 @@
 import os
 from itertools import combinations
 import random
-from DataProcessor.files_handler import read_file
+from words_processor import read_file
+
 
 def create_labeled_chunks(file_path1, file_path2, chunk_size=10, batch_size=20):
     # Read the files and tokenize the text
@@ -14,6 +15,8 @@ def create_labeled_chunks(file_path1, file_path2, chunk_size=10, batch_size=20):
     
     labeled_chunks1 = [(chunk, 0) for chunk in chunks1]
     labeled_chunks2 = [(chunk, 1) for chunk in chunks2]
+
+    
 
     labeled_chunks1 = [(chunk, label, i//batch_size) for i, (chunk, label) in enumerate(labeled_chunks1)]
     labeled_chunks2 = [(chunk, label, i//batch_size) for i, (chunk, label) in enumerate(labeled_chunks2)]
@@ -38,6 +41,11 @@ def process_file_pairs(directory):
         # Call your function on the file pair
         dataet = create_labeled_chunks(file_path1, file_path2)
 
+
+
+        
+
 # Call the function
+os.environ['HOME'] = os.path.dirname(os.path.dirname(__file__))
 tokens_directory = os.path.join(os.environ['HOME'], 'data', 'tokens')
 process_file_pairs(tokens_directory)

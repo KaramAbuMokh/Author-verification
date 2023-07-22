@@ -3,8 +3,9 @@ import os
 
 def read_file(file_path):
     try:
-        with open(file_path, 'r') as file:
-            return file.read()
+        with open(file_path, 'r', encoding='utf-8') as file:
+            file_content = file.read()
+        return file_content
     except FileNotFoundError:
         print("File not found at the specified path.")
         print(f"Specified file path: {file_path}")
@@ -74,7 +75,7 @@ def process_file(file_path, dis_path):
     # Tokenize the text
     tokens = tokenize(text)
 
-    write_string_to_file(text, dis_path)
+    write_string_to_file(tokens, dis_path)
 
 
 
@@ -86,3 +87,9 @@ def process_all_files():
         file_path = os.path.join(src_directory, filename)
         dis_path = os.path.join(dis_directory, filename)
         process_file(file_path, dis_path)
+        os.path.dirname
+        
+
+
+os.environ['HOME'] = os.path.dirname(os.path.dirname(__file__))
+process_all_files()
